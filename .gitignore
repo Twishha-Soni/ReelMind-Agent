@@ -1,0 +1,23 @@
+# Environment
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Vector store — auto-created on ingest, no need to commit
+chroma_store/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store

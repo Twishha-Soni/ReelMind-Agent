@@ -1,0 +1,8 @@
+# .dockerignore
+.env
+.git
+__pycache__
+*.pyc
+chroma_store/
+venv/
+.venv/

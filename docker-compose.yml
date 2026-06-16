@@ -1,0 +1,27 @@
+services:
+  bot:
+    # Build the image from the Dockerfile in the current directory.
+    # On EC2, you'll replace this with a pre-built image from Docker Hub.
+    # For local testing, "build: ." is all you need.
+    build: .
+
+    # Container name — makes docker logs, docker exec easier to type.
+    container_name: reelmind
+
+    # Auto-restart on crash. Won't restart if you run "docker compose stop".
+    restart: unless-stopped
+
+    # Env vars injected at runtime — never baked into the image.
+    # docker-compose automatically reads from a .env file in the same directory.
+    # Your load_dotenv() calls fall back to the real environment,
+    # so these vars are picked up exactly as if .env had been loaded.
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - GEMINI_API_KEY_VIDEO_ANALYZER=${GEMINI_API_KEY_VIDEO_ANALYZER}
+      - GEMINI_API_KEY_SEARCH_RESULT_GENERATOR=${GEMINI_API_KEY_SEARCH_RESULT_GENERATOR}
+
+    # Bind mount — maps host path to container path.
+    # Left side  = path on EC2 host (created automatically if missing)
+    # Right side = path inside the container (where ChromaDB writes)
+    volumes:
+      - ./chroma-store:/app/chroma-store
