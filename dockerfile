@@ -42,4 +42,4 @@ COPY src/ ./src/
 # Equivalent to: cd /app && python -m bot.telegram_bot
 # CMD is not a build step — it runs when a container starts.
 # Using the list form (not a string) avoids a shell wrapper process.
-CMD ["python", "-m", "bot.telegram_bot"]
+CMD ["python3", "src/bot/telegram_bot.py"]
